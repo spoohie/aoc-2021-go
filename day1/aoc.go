@@ -1,31 +1,19 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"strconv"
+
+	"github.com/spoohie/AoC-2021-Go/utils"
 )
 
 func main() {
-	file, err := os.Open("input.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
-
+	raw_data := utils.ParseFile()
 	var data []int
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		val, _ := strconv.Atoi(scanner.Text())
+	for _, d := range raw_data {
+		val, _ := strconv.Atoi(d)
 		data = append(data, val)
 	}
-
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
-	}
-
 	fmt.Printf("Part one solution: %d\n", part_one(data))
 	fmt.Printf("Part two solution: %d\n", part_two(data))
 }

@@ -1,12 +1,12 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"log"
-	"os"
 	"strconv"
 	"strings"
+
+	"github.com/spoohie/AoC-2021-Go/utils"
 )
 
 type Move struct {
@@ -15,26 +15,16 @@ type Move struct {
 }
 
 func main() {
-	file, err := os.Open("input.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
-
+	raw_data := utils.ParseFile()
 	var data []Move
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		line := strings.Split(scanner.Text(), " ")
+	for _, v := range raw_data {
+		line := strings.Split(v, " ")
 		dir := line[0]
 		val, err := strconv.Atoi(line[1])
 		if err != nil {
 			log.Fatal(err)
 		}
 		data = append(data, Move{dir, val})
-	}
-
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
 	}
 
 	fmt.Printf("Part one solution: %d\n", part_one(data))
