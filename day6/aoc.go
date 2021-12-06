@@ -47,5 +47,5 @@ func calculate_growth(data []int, days int) int {
 		fish_by_age[6] += zeroes
 		fish_by_age[8] += zeroes
 	}
-	return utils.Sum(fish_by_age)
+	return utils.Sum(fish_by_age[:])
 }
