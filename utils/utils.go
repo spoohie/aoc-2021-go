@@ -31,3 +31,19 @@ func Sum(array []int) int {
 	}
 	return result
 }
+
+func MaxIntSlice(s []int) (m int) {
+	for i, e := range s {
+		if i == 0 || e > m {
+			m = e
+		}
+	}
+	return m
+}
+
+func Abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
