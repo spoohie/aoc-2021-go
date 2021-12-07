@@ -24,9 +24,7 @@ func part_two(data []string) int64 {
 	return oxygen_rating(data) * co2_rating(data)
 }
 
-func calculate_bit_chains(data []string) (string, string) {
-	var mcb string
-	var lcb string
+func calculate_bit_chains(data []string) (mcb string, lcb string) {
 	for i := 0; i < len(data[0]); i++ {
 		var s string
 		for _, v := range data {
@@ -83,8 +81,7 @@ func co2_rating(data []string) int64 {
 	return bintodec(data[0])
 }
 
-func match_data_with_chain(data []string, chain string, index int) []string {
-	var new_data []string
+func match_data_with_chain(data []string, chain string, index int) (new_data []string) {
 	for _, d := range data {
 		if d[index] == chain[index] {
 			new_data = append(new_data, d)

@@ -18,8 +18,7 @@ func main() {
 	fmt.Printf("Part two solution: %d\n", part_two(data))
 }
 
-func part_one(data []int) int {
-	val := 0
+func part_one(data []int) (val int) {
 	for i := 1; i < len(data); i++ {
 		if data[i] > data[i-1] {
 			val += 1
@@ -28,8 +27,7 @@ func part_one(data []int) int {
 	return val
 }
 
-func part_two(data []int) int {
-	val := 0
+func part_two(data []int) (val int) {
 	for i := 3; i < len(data); i++ {
 		a := data[i-3] + data[i-2] + data[i-1]
 		b := data[i-2] + data[i-1] + data[i]
