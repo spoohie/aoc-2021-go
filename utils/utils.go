@@ -6,14 +6,13 @@ import (
 	"os"
 )
 
-func ParseFile() []string {
+func ParseFile() (data []string) {
 	file, err := os.Open("input.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer file.Close()
 
-	var data []string
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		data = append(data, scanner.Text())
@@ -24,12 +23,11 @@ func ParseFile() []string {
 	return data
 }
 
-func Sum(array []int) int {
-	result := 0
+func Sum(array []int) (s int) {
 	for _, v := range array {
-		result += v
+		s += v
 	}
-	return result
+	return s
 }
 
 func MaxIntSlice(s []int) (m int) {
